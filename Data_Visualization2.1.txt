@@ -1,0 +1,44 @@
+import time
+import requests
+def downspeed():
+  
+    url = input("Enter complete URL of site for which you want to perform speed test \n")
+
+    start = time.time()
+    file = requests.get(url)
+    end = time.time()
+
+    time_difference = end - start
+    return time_difference
+In [24]:
+speed=downspeed()
+Enter complete URL of site for which you want to perform speed test 
+https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html
+In [25]:
+import sys
+sys.path.append("C:/Users/Tarini Tyagi/Untitled Folder")  # Giving path of file MatGauge so that it can be used like a module
+import matgauge  # MatGauge is having definition of Gauge function
+In [34]:
+td=speed
+num=0
+if td>=0.0 and td<2.0:
+    num=1
+elif td>=2.0 and td<4.0:
+    num=3
+elif td>=4.0 and td<6.0:
+    num=5
+elif td>=6.0 and td<8.0:
+    num=7
+elif td>=8.0 and td<10.0:
+    num=9
+elif td>10:
+    num=10
+else:
+    num=0
+print("Downspeed in KB per second :")
+print(speed)  
+#print(num)
+matgauge.gauge(labels=['1','2','3','4','5','6','7','8','9','10'], \
+      colors='RdBu', arrow=int(num), title='Website Speed Tracker')
+Downspeed in KB per second :
+10.417795419692993
